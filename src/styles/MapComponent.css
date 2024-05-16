@@ -14,3 +14,12 @@
   margin: 12px;
   border-radius: 4px;
 }
+
+.marker {
+  background-image: url(../assets/marker.svg);
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
