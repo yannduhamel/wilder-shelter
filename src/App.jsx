@@ -1,14 +1,14 @@
+
 import "./App.css";
-import MapComponent from "./components/MapComponent";
-import InfoMassif from "./components/InfoMassif";
+
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <section>
-      <MapComponent />
-      <InfoMassif />
-    </section>
+    <>
+      <Outlet />
+    </>
+
   );
 }
-
 export default App;
