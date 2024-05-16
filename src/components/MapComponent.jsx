@@ -123,19 +123,18 @@ export default function MapComponent() {
   }, [jura, massifCentral, alpes, pyrenees]);
 
   return (
-    <>
-      <>
+    <div className="global-div-map">
+      <div ref={mapContainer} className="map-container">
         <div className="sidebar">
           Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
         </div>
-        <div ref={mapContainer} className="map-container"></div>
-      </>
+      </div>
       <InfoMassif
         pyrenees={pyrenees}
         jura={jura}
         alpes={alpes}
         massifCentral={massifCentral}
       />
-    </>
+    </div>
   );
 }
