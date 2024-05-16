@@ -60,8 +60,6 @@ export default function MapComponent() {
   }, []);
 
   useEffect(() => {
-    if (!map.current) return; // initialize map only once
-
     map.current = new Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
@@ -76,45 +74,53 @@ export default function MapComponent() {
     });
 
     for (let i = 0; i < pyrenees.length; i++) {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        pyrenees[i].properties.nom
+      );
       const el = document.createElement("div");
       el.className = "marker";
       new Marker(el)
         .setLngLat(pyrenees[i].geometry.coordinates)
+        .setPopup(popup)
         .addTo(map.current);
     }
 
     for (let i = 0; i < jura.length; i++) {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        jura[i].properties.nom
+      );
       const el = document.createElement("div");
       el.className = "marker";
-      new Marker(el).setLngLat(jura[i].geometry.coordinates).addTo(map.current);
+      new Marker(el)
+        .setLngLat(jura[i].geometry.coordinates)
+        .setPopup(popup)
+        .addTo(map.current);
     }
 
     for (let i = 0; i < massifCentral.length; i++) {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        massifCentral[i].properties.nom
+      );
       const el = document.createElement("div");
       el.className = "marker";
       new Marker(el)
         .setLngLat(massifCentral[i].geometry.coordinates)
+        .setPopup(popup)
         .addTo(map.current);
     }
 
     for (let i = 0; i < alpes.length; i++) {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        alpes[i].properties.nom
+      );
       const el = document.createElement("div");
       el.className = "marker";
       new Marker(el)
         .setLngLat(alpes[i].geometry.coordinates)
+        .setPopup(popup)
         .addTo(map.current);
     }
-
-    // create a HTML element for each feature
-    // const el = document.createElement("div");
-    // el.className = "marker";
-
-    // make a marker for each feature and add to the map
-
-    // new Marker(el).setLngLat(feature.geometry.coordinates).addTo(map.current);
-  }, [zoom, lng, lat, jura, massifCentral, alpes, pyrenees]);
-
-  console.log(pyrenees);
+  }, [jura, massifCentral, alpes, pyrenees]);
 
   return (
     <>
