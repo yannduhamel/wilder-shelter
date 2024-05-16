@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import "../styles/InfoMassif.css";
 
 function InfoMassif({ pyrenees, jura, alpes, massifCentral }) {
-  const { id } = useParams();
-
   return (
     <section className="info-massif">
+      <h2>Refuges</h2>
       <h3>Pyrénées</h3>
       {pyrenees.map((unRefuge) => (
         <Link
@@ -26,10 +26,8 @@ function InfoMassif({ pyrenees, jura, alpes, massifCentral }) {
           to={`/refuge/${unRefuge.id}`}
           state={{ unRefuge }}
         >
-          <p>
-            {unRefuge.properties.nom} | Altitude :{" "}
-            {unRefuge.properties.coord.alt} m
-          </p>
+          {unRefuge.properties.nom} | Altitude : {unRefuge.properties.coord.alt}{" "}
+          m
         </Link>
       ))}
       <h3>Jura</h3>
@@ -39,10 +37,8 @@ function InfoMassif({ pyrenees, jura, alpes, massifCentral }) {
           to={`/refuge/${unRefuge.id}`}
           state={{ unRefuge }}
         >
-          <p>
-            {unRefuge.properties.nom} | Altitude :{" "}
-            {unRefuge.properties.coord.alt} m
-          </p>
+          {unRefuge.properties.nom} | Altitude : {unRefuge.properties.coord.alt}{" "}
+          m
         </Link>
       ))}
       <h3>Massif Central</h3>
@@ -52,14 +48,19 @@ function InfoMassif({ pyrenees, jura, alpes, massifCentral }) {
           to={`/refuge/${unRefuge.id}`}
           state={{ unRefuge }}
         >
-          <p>
-            {unRefuge.properties.nom} | Altitude :{" "}
-            {unRefuge.properties.coord.alt} m
-          </p>
+          {unRefuge.properties.nom} | Altitude : {unRefuge.properties.coord.alt}{" "}
+          m
         </Link>
       ))}
     </section>
   );
 }
+
+InfoMassif.propTypes = {
+  pyrenees: PropTypes.array.isRequired,
+  alpes: PropTypes.array.isRequired,
+  jura: PropTypes.array.isRequired,
+  massifCentral: PropTypes.array.isRequired,
+};
 
 export default InfoMassif;

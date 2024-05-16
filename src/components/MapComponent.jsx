@@ -60,8 +60,6 @@ export default function MapComponent() {
   }, []);
 
   useEffect(() => {
-    if (!map.current) return; // initialize map only once
-
     map.current = new Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
@@ -104,32 +102,23 @@ export default function MapComponent() {
         .setLngLat(alpes[i].geometry.coordinates)
         .addTo(map.current);
     }
-
-    // create a HTML element for each feature
-    // const el = document.createElement("div");
-    // el.className = "marker";
-
-    // make a marker for each feature and add to the map
-
-    // new Marker(el).setLngLat(feature.geometry.coordinates).addTo(map.current);
-  }, [zoom, lng, lat, jura, massifCentral, alpes, pyrenees]);
+  }, [jura, massifCentral, alpes, pyrenees]);
 
   console.log(pyrenees);
 
   return (
-    <>
-      <>
+    <div className="global-div-map">
+      <div ref={mapContainer} className="map-container">
         <div className="sidebar">
           Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
         </div>
-        <div ref={mapContainer} className="map-container"></div>
-      </>
+      </div>
       <InfoMassif
         pyrenees={pyrenees}
         jura={jura}
         alpes={alpes}
         massifCentral={massifCentral}
       />
-    </>
+    </div>
   );
 }
