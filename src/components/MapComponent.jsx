@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import mapboxgl, { Marker, Map } from "mapbox-gl";
+import axios from "axios";
 import "../styles/MapComponent.css";
 import InfoMassif from "./InfoMassif";
 
@@ -41,6 +42,59 @@ export default function MapComponent() {
   const [lat, setLat] = useState(46.72);
   const [zoom, setZoom] = useState(4.95);
 
+  const [pyrenees, setPyrenees] = useState([]);
+  const [alpes, setAlpes] = useState([]);
+  const [jura, setJura] = useState([]);
+  const [massifCentral, setMassifCentral] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://www.refuges.info/api/massif?massif=351&type_points=all&nb_points=5"
+      )
+      .then((res) => {
+        setPyrenees(res.data.features);
+      });
+  }, []);
+
+  console.log(pyrenees);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://www.refuges.info/api/massif?massif=352&type_points=all&nb_points=5"
+      )
+      .then((res) => {
+        setAlpes(res.data.features);
+      });
+  }, []);
+
+  console.log(alpes);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://www.refuges.info/api/massif?massif=2198&type_points=all&nb_points=5"
+      )
+      .then((res) => {
+        setJura(res.data.features);
+      });
+  }, []);
+
+  console.log(jura);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://www.refuges.info/api/massif?massif=50&type_points=all&nb_points=5"
+      )
+      .then((res) => {
+        setMassifCentral(res.data.features);
+      });
+  }, []);
+
+  console.log(massifCentral);
+
   useEffect(() => {
     if (map.current) return; // initialize map only once
     map.current = new Map({
@@ -62,6 +116,7 @@ export default function MapComponent() {
       el.className = "marker";
 
       // make a marker for each feature and add to the map
+
       new Marker(el).setLngLat(feature.geometry.coordinates).addTo(map.current);
     }
   }, [lat, lng, zoom]);
@@ -74,7 +129,12 @@ export default function MapComponent() {
         </div>
         <div ref={mapContainer} className="map-container"></div>
       </>
-      <InfoMassif />
+      <InfoMassif
+        pyrenees={pyrenees}
+        jura={jura}
+        alpes={alpes}
+        massifCentral={massifCentral}
+      />
     </>
   );
 }
