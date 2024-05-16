@@ -7,34 +7,6 @@ import InfoMassif from "./InfoMassif";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYW5vbnltemUiLCJhIjoiY2wyZWppdWZjMDE5cjNmb2drejYzemswcSJ9.Ikuq09fwres0ikyw6J8qDw";
 
-const geojson = {
-  type: "FeatureCollection",
-  features: [
-    {
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: [0.0764, 42.9711],
-      },
-      properties: {
-        title: "Mapbox",
-        description: "Washington, D.C.",
-      },
-    },
-    {
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: [1.63272, 42.70317],
-      },
-      properties: {
-        title: "Mapbox",
-        description: "San Francisco, California",
-      },
-    },
-  ],
-};
-
 export default function MapComponent() {
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -57,8 +29,6 @@ export default function MapComponent() {
       });
   }, []);
 
-  console.log(pyrenees);
-
   useEffect(() => {
     axios
       .get(
@@ -68,8 +38,6 @@ export default function MapComponent() {
         setAlpes(res.data.features);
       });
   }, []);
-
-  console.log(alpes);
 
   useEffect(() => {
     axios
@@ -81,8 +49,6 @@ export default function MapComponent() {
       });
   }, []);
 
-  console.log(jura);
-
   useEffect(() => {
     axios
       .get(
@@ -93,10 +59,9 @@ export default function MapComponent() {
       });
   }, []);
 
-  console.log(massifCentral);
-
   useEffect(() => {
-    if (map.current) return; // initialize map only once
+    if (!map.current) return; // initialize map only once
+
     map.current = new Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
@@ -110,16 +75,46 @@ export default function MapComponent() {
       setZoom(map.current.getZoom().toFixed(2));
     });
 
-    for (const feature of geojson.features) {
-      // create a HTML element for each feature
+    for (let i = 0; i < pyrenees.length; i++) {
       const el = document.createElement("div");
       el.className = "marker";
-
-      // make a marker for each feature and add to the map
-
-      new Marker(el).setLngLat(feature.geometry.coordinates).addTo(map.current);
+      new Marker(el)
+        .setLngLat(pyrenees[i].geometry.coordinates)
+        .addTo(map.current);
     }
-  }, [lat, lng, zoom]);
+
+    for (let i = 0; i < jura.length; i++) {
+      const el = document.createElement("div");
+      el.className = "marker";
+      new Marker(el).setLngLat(jura[i].geometry.coordinates).addTo(map.current);
+    }
+
+    for (let i = 0; i < massifCentral.length; i++) {
+      const el = document.createElement("div");
+      el.className = "marker";
+      new Marker(el)
+        .setLngLat(massifCentral[i].geometry.coordinates)
+        .addTo(map.current);
+    }
+
+    for (let i = 0; i < alpes.length; i++) {
+      const el = document.createElement("div");
+      el.className = "marker";
+      new Marker(el)
+        .setLngLat(alpes[i].geometry.coordinates)
+        .addTo(map.current);
+    }
+
+    // create a HTML element for each feature
+    // const el = document.createElement("div");
+    // el.className = "marker";
+
+    // make a marker for each feature and add to the map
+
+    // new Marker(el).setLngLat(feature.geometry.coordinates).addTo(map.current);
+  }, [zoom, lng, lat, jura, massifCentral, alpes, pyrenees]);
+
+  console.log(pyrenees);
 
   return (
     <>
