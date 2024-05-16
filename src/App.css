@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  background-color: #d9d9d9;
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card {
+  width: 50%;
+  height: 300px;
+  background-color: #ebffd4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-left: 30rem;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
