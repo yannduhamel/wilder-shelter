@@ -1,12 +1,10 @@
-import "./App.css";
-import MapComponent from "./components/MapComponent";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <section>
-      <MapComponent />
-    </section>
+    <>
+      <Outlet />
+    </>
   );
 }
-
 export default App;
