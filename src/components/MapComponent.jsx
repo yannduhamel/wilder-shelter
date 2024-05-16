@@ -60,7 +60,7 @@ export default function MapComponent() {
   }, []);
 
   useEffect(() => {
-    if (!map.current) return; // initialize map only once
+    if (map.current) return; // initialize map only once
 
     map.current = new Map({
       container: mapContainer.current,
