@@ -1,6 +1,3 @@
-
-import "./App.css";
-
 import { Outlet } from "react-router-dom";
 
 function App() {
@@ -8,7 +5,6 @@ function App() {
     <>
       <Outlet />
     </>
-
   );
 }
 export default App;

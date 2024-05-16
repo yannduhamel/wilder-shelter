@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "../styles/MapComponent.css";
+import InfoMassif from "./InfoMassif";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYW5vbnltemUiLCJhIjoiY2wyZWppdWZjMDE5cjNmb2drejYzemswcSJ9.Ikuq09fwres0ikyw6J8qDw";
@@ -29,11 +30,14 @@ export default function MapComponent() {
   });
 
   return (
-    <div>
-      <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+    <>
+      <div>
+        <div className="sidebar">
+          Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        </div>
+        <div ref={mapContainer} className="map-container" />
       </div>
-      <div ref={mapContainer} className="map-container" />
-    </div>
+      <InfoMassif />
+    </>
   );
 }
