@@ -74,37 +74,53 @@ export default function MapComponent() {
     });
 
     for (let i = 0; i < pyrenees.length; i++) {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        pyrenees[i].properties.nom
+      );
       const el = document.createElement("div");
       el.className = "marker";
       new Marker(el)
         .setLngLat(pyrenees[i].geometry.coordinates)
+        .setPopup(popup)
         .addTo(map.current);
     }
 
     for (let i = 0; i < jura.length; i++) {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        jura[i].properties.nom
+      );
       const el = document.createElement("div");
       el.className = "marker";
-      new Marker(el).setLngLat(jura[i].geometry.coordinates).addTo(map.current);
+      new Marker(el)
+        .setLngLat(jura[i].geometry.coordinates)
+        .setPopup(popup)
+        .addTo(map.current);
     }
 
     for (let i = 0; i < massifCentral.length; i++) {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        massifCentral[i].properties.nom
+      );
       const el = document.createElement("div");
       el.className = "marker";
       new Marker(el)
         .setLngLat(massifCentral[i].geometry.coordinates)
+        .setPopup(popup)
         .addTo(map.current);
     }
 
     for (let i = 0; i < alpes.length; i++) {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        alpes[i].properties.nom
+      );
       const el = document.createElement("div");
       el.className = "marker";
       new Marker(el)
         .setLngLat(alpes[i].geometry.coordinates)
+        .setPopup(popup)
         .addTo(map.current);
     }
   }, [jura, massifCentral, alpes, pyrenees]);
-
-  console.log(pyrenees);
 
   return (
     <div className="global-div-map">

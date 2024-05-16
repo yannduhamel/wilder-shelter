@@ -39,3 +39,22 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+.mapboxgl-popup {
+  max-width: 7rem;
+}
+
+.mapboxgl-popup-content {
+  font-family: Montserra;
+  font-weight: bolder;
+  color: white;
+  font-size: 1rem;
+  border: 0.1rem solid;
+  border-color: white;
+  background-color: rgba(0, 130, 209, 1);
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 1rem;
+  background-color: rgba(0, 130, 209, 1);
+}
