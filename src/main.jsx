@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         element: <MapComponent />,
       },
       {
-        path: "/refuge",
+        path: "/refuge/:id",
         element: <Refuge />,
       },
     ],
