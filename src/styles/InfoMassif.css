@@ -4,11 +4,7 @@
 }
 
 .info-massif {
-  width: 35rem;
-}
-
-p {
-  font-size: 0.8rem;
+  min-width: 90vw;
 }
 
 .info-massif > h2 {
@@ -17,13 +13,12 @@ p {
   text-align: center;
   border-radius: 0.6em;
   padding: 0.7rem;
+  margin-bottom: 2rem;
 }
 
-.info-massif > h3 {
+.mountain-title {
   color: #0082d1;
   text-align: center;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
 }
 
 .info-massif > a {
@@ -32,9 +27,30 @@ p {
   color: black;
   margin: 0.5rem;
   font-family: montserrat;
+  font-size: 0.8rem;
 }
 
 .info-massif > a:hover {
   color: #0082d1;
   font-weight: bolder;
+}
+
+.accordion-link {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  margin: 0.5rem;
+  font-family: montserrat;
+  font-size: 0.8rem;
+}
+
+.accordion-link:hover {
+  color: #0082d1;
+  font-weight: bolder;
+}
+
+@media screen and (min-width: 768px) {
+  .info-massif {
+    min-width: 28rem;
+  }
 }
