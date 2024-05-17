@@ -26,8 +26,10 @@ function InfoMassif({ pyrenees, jura, alpes, massifCentral }) {
           to={`/refuge/${unRefuge.id}`}
           state={{ unRefuge }}
         >
-          {unRefuge.properties.nom} | Altitude : {unRefuge.properties.coord.alt}{" "}
-          m
+          <p>
+            {unRefuge.properties.nom} | Altitude :{" "}
+            {unRefuge.properties.coord.alt} m
+          </p>
         </Link>
       ))}
       <h3>Jura</h3>
@@ -37,8 +39,10 @@ function InfoMassif({ pyrenees, jura, alpes, massifCentral }) {
           to={`/refuge/${unRefuge.id}`}
           state={{ unRefuge }}
         >
-          {unRefuge.properties.nom} | Altitude : {unRefuge.properties.coord.alt}{" "}
-          m
+          <p>
+            {unRefuge.properties.nom} | Altitude :{" "}
+            {unRefuge.properties.coord.alt} m
+          </p>
         </Link>
       ))}
       <h3>Massif Central</h3>
@@ -48,8 +52,10 @@ function InfoMassif({ pyrenees, jura, alpes, massifCentral }) {
           to={`/refuge/${unRefuge.id}`}
           state={{ unRefuge }}
         >
-          {unRefuge.properties.nom} | Altitude : {unRefuge.properties.coord.alt}{" "}
-          m
+          <p>
+            {unRefuge.properties.nom} | Altitude :{" "}
+            {unRefuge.properties.coord.alt} m
+          </p>
         </Link>
       ))}
     </section>

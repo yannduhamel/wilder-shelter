@@ -22,7 +22,7 @@ export default function MapComponent() {
   useEffect(() => {
     axios
       .get(
-        "https://www.refuges.info/api/massif?massif=351&type_points=all&nb_points=5"
+        `https://www.refuges.info/api/massif?massif=351&type_points=all&nb_points=5`
       )
       .then((res) => {
         setPyrenees(res.data.features);
@@ -73,14 +73,14 @@ export default function MapComponent() {
       setZoom(map.current.getZoom().toFixed(2));
     });
 
-    for (let i = 0; i < pyrenees.length; i++) {
+    for (let massif of pyrenees) {
       const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-        pyrenees[i].properties.nom
+        massif.properties.nom
       );
       const el = document.createElement("div");
       el.className = "marker";
       new Marker(el)
-        .setLngLat(pyrenees[i].geometry.coordinates)
+        .setLngLat(massif.geometry.coordinates)
         .setPopup(popup)
         .addTo(map.current);
     }
