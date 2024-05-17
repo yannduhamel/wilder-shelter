@@ -5,6 +5,9 @@ function Refuge() {
   const location = useLocation();
   const { unRefuge } = location.state;
   const logo = unRefuge?.properties?.type?.icone;
+  const handleBack = () => {
+    window.history.back();
+  };
 
   const coordinates = unRefuge?.geometry?.coordinates;
 
@@ -52,6 +55,9 @@ function Refuge() {
   return (
     <div className="container-refuge">
       <div key={unRefuge.id} className="card-refuge">
+        <button onClick={handleBack} className="button-back">
+          X
+        </button>
         <h1 key={unRefuge.id}>{unRefuge?.properties?.nom}</h1>
         <img src={imgs[getRandomInt()].src}></img>
         <div className="texte-refuge">
