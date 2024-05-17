@@ -1,5 +1,6 @@
 import "../App.css";
 import { useLocation } from "react-router-dom";
+import "../styles/Refuge.css";
 
 function Refuge() {
   const location = useLocation();
@@ -49,17 +50,14 @@ function Refuge() {
   }
 
   return (
-    <div className="container">
-      <div key={unRefuge.id} className="card">
+    <div className="container-refuge">
+      <div key={unRefuge.id} className="card-refuge">
         <h1 key={unRefuge.id}>{unRefuge?.properties?.nom}</h1>
         <a href={unRefuge?.properties?.lien}>{unRefuge?.properties?.lien}</a>
-        <br /> <img src={imgs[getRandomInt()].src}></img>
+        <img src={imgs[getRandomInt()].src}></img>
         <p>
           {unRefuge?.properties?.places?.nom} :{" "}
           {unRefuge?.properties?.places?.valeur}
-        </p>
-        <p>
-          Coordonnées GPS : {coordinates[0]}, {coordinates[1]}{" "}
         </p>
       </div>
     </div>
