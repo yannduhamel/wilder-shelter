@@ -34,7 +34,7 @@ body {
 }
 
 .card-refuge img {
-  width: 60%;
+  width: 75%;
   border-radius: 3rem;
 }
 
@@ -43,7 +43,10 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  width: 60%;
+  width: 70%;
+  p {
+    font-size: 1.3rem;
+  }
 }
 
 .texte-refuge > p > a {
@@ -54,8 +57,4 @@ body {
 
 .texte-refuge .p-lien-refuge {
   font-size: 1rem;
-}
-
-.texte-refuge p {
-  font-size: 2rem;
 }

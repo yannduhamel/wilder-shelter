@@ -59,6 +59,9 @@ function Refuge() {
           {unRefuge?.properties?.places?.nom} :{" "}
           {unRefuge?.properties?.places?.valeur}
         </p>
+        <p>
+          Coordonnées GPS : {coordinates[0]}, {coordinates[1]}{" "}
+        </p>
       </div>
     </div>
   );
