@@ -5,6 +5,8 @@ import "../styles/Refuge.css";
 function Refuge() {
   const location = useLocation();
   const { unRefuge } = location.state;
+   const logo = unRefuge?.properties?.type?.icone;
+
 
   const coordinates = unRefuge?.geometry?.coordinates;
 
@@ -62,8 +64,33 @@ function Refuge() {
         <p>
           Coordonnées GPS : {coordinates[0]}, {coordinates[1]}{" "}
         </p>
+
+        <p>Outil Disponible sur Place :</p>
+        <div className="icones">
+          {logo.includes("eau") ? (
+            <img src="https://cdn-icons-png.flaticon.com/512/850/850785.png" />
+          ) : (
+            <img src=""></img>
+          )}
+          {logo.includes("feu") ? (
+            <img src="https://cdn-icons-png.flaticon.com/512/1172/1172477.png" />
+          ) : (
+            <img src=""></img>
+          )}
+          {logo.includes("a48") ? (
+            <img src="" />
+          ) : (
+            <img src="https://cdn-icons-png.flaticon.com/512/3063/3063509.png"></img>
+          )}
+        </div>
+
       </div>
     </div>
   );
 }
+ 
+
+
+  
+
 export default Refuge;
