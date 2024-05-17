@@ -18,7 +18,7 @@ body {
 
 .card {
   width: 55rem;
-  height: 45rem;
+  height: 55rem;
   background-color: #ebffd4;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -31,4 +31,13 @@ body {
 
 .card img {
   width: 60%;
+}
+
+.icones {
+  display: flex;
+  width: 10rem;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
