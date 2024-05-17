@@ -11,7 +11,11 @@
   align-items: center;
   padding: 1rem;
   min-height: 100vh;
-  background-color: var(--background-color);
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../assets/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .map-container {
