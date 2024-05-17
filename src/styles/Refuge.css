@@ -27,6 +27,20 @@
   background-color: #ebffd4;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 3rem;
+  position: relative;
+}
+
+.button-back {
+  color: #0082d1;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 1%;
+  right: 3%;
+  margin: 5px;
+  cursor: pointer;
 }
 
 .card-refuge > h1 {
@@ -81,6 +95,13 @@
     height: 80svh;
     text-align: center;
     justify-content: space-evenly;
+  }
+
+  .button-back {
+    top: 1.5%;
+    right: 7%;
+    margin: 5px;
+    font-size: 1.2rem;
   }
 
   .card-refuge > h1 {
